@@ -1,0 +1,11 @@
+{
+  "name": "shiva/web-shop-bidding",
+  "description": "Web Shop Bidding backend",
+  "type": "project",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}

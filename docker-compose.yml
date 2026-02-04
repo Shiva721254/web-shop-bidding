@@ -1,0 +1,26 @@
+services:
+  db:
+    image: mariadb:11
+    environment:
+      MARIADB_DATABASE: webshop
+      MARIADB_USER: developer
+      MARIADB_PASSWORD: secret123
+      MARIADB_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  php:
+    image: php:8.3-cli
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - db
+    command: php -S 0.0.0.0:8000 -t public
+    ports:
+      - "8000:8000"
+
+volumes:
+  db_data:
