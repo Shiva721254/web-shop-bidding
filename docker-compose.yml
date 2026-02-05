@@ -10,9 +10,11 @@ services:
       - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
+      - ./database:/docker-entrypoint-initdb.d
 
   php:
-    image: php:8.3-cli
+    build:
+      context: ./backend
     working_dir: /app
     volumes:
       - ./backend:/app
